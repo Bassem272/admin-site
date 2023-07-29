@@ -584,14 +584,28 @@ main .btn-send:hover {
 
 
 
-@media screen and (max-width: 768px) {
-	#content {
-		position: relative;
-		width: calc(100% - 60px);
-		transition: all .3s ease;
-	}
-	nav .nav-link,
-	nav .divider {
-		display: none;
-	}
-}
+  
+  #usersList {
+	margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr ;
+	row-gap: 10px;
+	column-gap: 10px;
+	color:#fff
+  }
+  
+  #addUserForm {
+	margin-top: 50px;
+  }
+  
+  #addUserForm.hidden {
+	display: none;
+  }
+  
+  h1, h2 {
+	margin-bottom: 10px;
+  }
+  .user-item{
+	background:rgb(199, 30, 199);
+  }
+  
