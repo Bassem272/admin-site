@@ -1,7 +1,9 @@
 // SIDEBAR DROPDOWN
+
+// note ? the fetch methods are provided for the add suer adn the delete suer 
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
-
+const usersList = document.getElementById('usersList')
 allDropdown.forEach(item => {
     const a = item.parentElement.querySelector('a:first-child');
     a.addEventListener('click', function (e) {
@@ -88,42 +90,49 @@ window.addEventListener('click', function (e) {
 const products = [
     {
       name: "Product 1",
+      id:1,
       description: "Description for Product 1",
       price: 19.99,
       category: "Electronics",
     },
     {
       name: "Product 2",
+      id:1,
       description: "Description for Product 2",
       price: 29.99,
       category: "Clothing",
     },
     {
       name: "Product 3",
+      id:1,
       description: "Description for Product 3",
       price: 9.99,
       category: "Home & Kitchen",
     },
     {
       name: "Product 4",
+      id:1,
       description: "Description for Product 4",
       price: 39.99,
       category: "Beauty",
     },
     {
       name: "Product 5",
+      id:1,
       description: "Description for Product 5",
       price: 49.99,
       category: "Toys",
     },
     {
       name: "Product 6",
+      id:1,
       description: "Description for Product 6",
       price: 14.99,
       category: "Books",
     },
     {
       name: "Product 7",
+      id:1,
       description: "Description for Product 7",
       price: 24.99,
       category: "Sports & Outdoors",
@@ -134,16 +143,19 @@ const products = [
   const admins = [
     {
       username: "admin1",
+      id:1,
       email: "admin1@example.com",
       role: "Administrator",
     },
     {
       username: "admin2",
+      id:1,
       email: "admin2@example.com",
       role: "Administrator",
     },
     {
       username: "admin3",
+      id:1,
       email: "admin3@example.com",
       role: "Administrator",
     },
@@ -170,6 +182,7 @@ function showAddUserForm() {
   const  usersArray = [
     {
       name: "John Doe",
+      id:1,
       email: "john.doe@example.com",
       age: 30,
       gender: "Male",
@@ -177,6 +190,7 @@ function showAddUserForm() {
     },
     {
       name: "Jane Smith",
+      id:2,
       email: "jane.smith@example.com",
       age: 25,
       gender: "Female",
@@ -185,6 +199,7 @@ function showAddUserForm() {
     // Add more objects as needed
     {
       name: "Alex Johnson",
+      id:3,
       email: "alex.johnson@example.com",
       age: 40,
       gender: "Male",
@@ -192,6 +207,7 @@ function showAddUserForm() {
     },
     {
       name: "Emily Brown",
+      id:4,
       email: "emily.brown@example.com",
       age: 28,
       gender: "Female",
@@ -199,6 +215,7 @@ function showAddUserForm() {
     },
     {
       name: "Michael Lee",
+      id:5,
       email: "michael.lee@example.com",
       age: 35,
       gender: "Male",
@@ -206,6 +223,7 @@ function showAddUserForm() {
     },
     {
       name: "Sophia Martinez",
+      id:6,
       email: "sophia.martinez@example.com",
       age: 27,
       gender: "Female",
@@ -213,6 +231,7 @@ function showAddUserForm() {
     },
     {
       name: "William Davis",
+      id:7,
       email: "william.davis@example.com",
       age: 32,
       gender: "Male",
@@ -229,12 +248,18 @@ function showAddUserForm() {
   function createUserDiv(user) {
 	const userDiv = document.createElement('div');
 	userDiv.classList.add('user-item');
+  userDiv.setAttribute('userid',user.id)
 	userDiv.innerHTML = `
 	  <h3>${user.name}</h3>
+    <p>id:${user.id}</p>
 	  <p>Email: ${user.email}</p>
 	  <p>Age: ${user.age}</p>
 	  <p>Gender: ${user.gender}</p>
 	  <p>Role: ${user.role}</p>
+    <button id="deletebtn">delete</button>
+    <button id="editbtn">Edit</button>
+    
+
 	`;
 	usersList.appendChild(userDiv);
   }
@@ -253,7 +278,7 @@ userForm.addEventListener('submit',  (e)=>{
 	const newUser = {
 		name, email, age, gender, role
 	}
-	users[name]=newUser;
+	// users[name]=newUser;
 	usersArray.push(newUser);
 	 document.getElementById('name').value=''
 	 document.getElementById('email').value=''
@@ -281,4 +306,67 @@ userForm.addEventListener('submit',  (e)=>{
 
 })
 
+
+
+usersList.addEventListener('click', (e) => {
+  const deleteBtn = e.target.closest('#deletebtn');
+  console.log('Event Target:', e.target);
+  console.log('Delete Button:', deleteBtn);
+  if (deleteBtn) {
+    const userDiv = deleteBtn.parentElement;
+    console.log(userDiv);
+
+    const id = parseInt(userDiv.getAttribute('userid'), 10); // Retrieve the user ID from the 'userid' attribute
+    console.log(id);
+    const confirmDelete = confirm(`Are you sure you want to delete this user?${id}`);
+    deleteUser(id); // Pass the user ID directly to the deleteUser function
+  }
+});
+function deleteUser(id) {
+  const index = usersArray.findIndex(ele => ele.id === id);
+ 
+
+  if (index !== -1) {
+    // const confirmDelete = confirm(`Are you sure you want to delete this user?${id}`);
+    // if (confirmDelete) {
+    //   try {
+    //     // Send the delete fetch request to the backend
+    //     const response = await fetch(`api/user/${userId}`, {
+    //       method: 'DELETE',
+    //     });
+
+    //     if (response.ok) {
+    //       // If the server responds with a successful status code, update the UI
+    //       usersArray.splice(index, 1);
+    //       updateUi();
+    //       console.log('User deleted successfully from the database.');
+    //     } else {
+    //       console.error('Failed to delete user from the database.');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error occurred during the delete request:', error.message);
+    //   }
+    // }
+
+    usersArray.splice(index, 1);
+    updateUi();
+  }
+}
+
+function updateUi() {
+  usersList.innerHTML = '';
+  usersArray.forEach(user => {
+    createUserDiv(user);
+  });
+}
+
+
+
+
+// usersArray.forEach(user => createUserDiv(user));
+
+
+
+
+  
   

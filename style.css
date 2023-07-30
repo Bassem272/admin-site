@@ -589,9 +589,10 @@ main .btn-send:hover {
 	margin-bottom: 20px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr ;
-	row-gap: 10px;
-	column-gap: 10px;
-	color:#fff
+	/* row-gap: 10px;
+	column-gap: 10px; */
+	
+	background-color:#080808
   }
   
   #addUserForm {
@@ -606,6 +607,54 @@ main .btn-send:hover {
 	margin-bottom: 10px;
   }
   .user-item{
-	background:rgb(199, 30, 199);
+	background:rgb(46, 45, 45);
+	margin: 5px 5px 5px 5px;
+	padding: 5px;
+	color: #eaebef;
+	
   }
   
+  .user-item:hover{
+	background:var(--dark-blue);
+	
+  }
+  #editbtn{
+	
+	margin-top: 3px;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: .5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(205, 87, 39);
+    padding: 0.2rem .3rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255);
+  }
+  #editbtn:hover{
+	background-color:#D0E4FF;
+	color:#0d0c0d
+  }
+  #deletebtn{
+	
+	margin-top: 3px;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: .5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(205, 87, 39);
+    padding: 0.2rem .3rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255);
+  }
+  #deletebtn:hover{
+	background-color:#D0E4FF;
+	color:#0d0c0d
+  }

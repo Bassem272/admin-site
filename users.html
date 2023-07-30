@@ -150,8 +150,6 @@
 			<!-- second part of page  -->
 			
 			<h1>Users</h1>
-
-	
 	
 	
 		<div id="usersList">
@@ -161,6 +159,32 @@
 		  <div id="addUserForm" style="display:none">
 			<h2>Add User</h2>
 			<form id="userForm">
+			  <label for="name">Name:</label>
+			  <input type="text" id="name" required>
+	  
+			  <label for="email">Email:</label>
+			  <input type="email" id="email" required>
+	  
+			  <label for="age">Age:</label>
+			  <input type="number" id="age" required>
+	  
+			  <label for="gender">Gender:</label>
+			  <select id="gender" required>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="other">Other</option>
+			  </select>
+	  
+			  <label for="role">Role:</label>
+			  <input type="text" id="role" required>
+	  
+			  <button id='userSubmit'type="submit">Add User</button>
+			</form>
+		  </div>
+		  <!-- third part of the page-->
+		  <div id="editUserForm" style="display:none">
+			<h2>Add User</h2>
+			<form id="editForm">
 			  <label for="name">Name:</label>
 			  <input type="text" id="name" required>
 	  
