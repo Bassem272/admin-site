@@ -17,44 +17,27 @@
       <a href="#" class="brand"><i class="bx bxs-smile icon"></i> AdminSite</a>
       <ul class="side-menu">
         <li>
-          <a href="./index.html" class=""
-            ><i class="bx bxs-dashboard icon"></i> Dashboard</a
-          >
-        </li>
-        <li>
           <a href="./users.html" class="active"
             ><i class="bx bxs-dashboard icon"></i>User Management</a
           >
         </li>
         <li class="divider" data-text="main">Main</li>
         <li>
-          <a href="#"
-            ><i class="bx bxs-inbox icon"></i> Admins
-            <i class="bx bx-chevron-right icon-right"></i
-          ></a>
-          <ul class="side-dropdown">
-            <li><a href="#" class="addAdmin">Add admin</a></li>
-            <li><a href="#">Delete admin</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"
+          <a href="#" id="usersData"
             ><i class="bx bxs-inbox icon"></i> Users
             <i class="bx bx-chevron-right icon-right"></i
           ></a>
           <ul class="side-dropdown">
-            <li><a href="#" class="addUser">Add user</a></li>
-            <li><a href="#">Delete user</a></li>
+            <li><a href="#" class="addUser"></a></li>
           </ul>
         </li>
-        <li>
-          <a href="#"
+        <li> 
+          <a id="booksData" href="#"
             ><i class="bx bxs-inbox icon"></i>Books
             <i class="bx bx-chevron-right icon-right"></i
           ></a>
           <ul class="side-dropdown">
             <li><a href="#" class="addBook">Add Book</a></li>
-            <li><a href="#">Delete Product</a></li>
           </ul>
         </li>
         <li>
@@ -80,14 +63,6 @@
           </ul>
         </li>
       </ul>
-      <div class="ads">
-        <div class="wrapper">
-          <a href="#" class="btn-upgrade">Upgrade</a>
-          <p>
-            Become a <span>PRO</span> member and enjoy <span>All Features</span>
-          </p>
-        </div>
-      </div>
     </section>
     <!-- SIDEBAR -->
 
@@ -96,9 +71,9 @@
       <!-- NAVBAR -->
       <nav>
         <i class="bx bx-menu toggle-sidebar"></i>
-        <form action="#">
-          <div class="form-group">
-            <input type="text" placeholder="Search..." />
+        <form action="searchResults.html">
+          <div class="form-group  search-container">
+            <input type="text"id="searchInput" placeholder="Search..." />
             <i class="bx bx-search icon"></i>
           </div>
         </form>
@@ -141,19 +116,19 @@
           <div class="card">
             <div class="head">
               <div>
-                <h2>1500</h2>
-                <p>Traffic</p>
+                <h1 id="totalBooks">1</h1>
+                <h1>Total Books</h1>
               </div>
               <i class="bx bx-trending-up icon"></i>
             </div>
             <span class="progress" data-value="40%"></span>
-            <span class="label">40%</span>
+            <span class="label" >40%</span>
           </div>
           <div class="card">
             <div class="head">
               <div>
-                <h2>234</h2>
-                <p>Sales</p>
+                <h1 id="totalUsers">1</h1>
+                <h1>Users</h1>
               </div>
               <i class="bx bx-trending-down icon down"></i>
             </div>
@@ -163,19 +138,19 @@
           <div class="card">
             <div class="head">
               <div>
-                <h2>465</h2>
-                <p>Pageviews</p>
+                <h1 id="totalProfit">1</h1>
+                <h1>Profits</h1>
               </div>
               <i class="bx bx-trending-up icon"></i>
             </div>
             <span class="progress" data-value="30%"></span>
-            <span class="label">30%</span>
+            <span class="label" >30%</span>
           </div>
           <div class="card">
             <div class="head">
               <div>
-                <h2>235</h2>
-                <p>Visitors</p>
+                <h1 id="totalOrders">1</h1>
+                <h1>Orders</h1>
               </div>
               <i class="bx bx-trending-up icon"></i>
             </div>
@@ -186,9 +161,16 @@
         <!-- first part of page -->
 
         <!-- second part of page  -->
+<!-- search part of the page  -->
 
         <h1>Users</h1>
         <div id="usersList">
+          <div class="placeHolder">product is here click users for data</div>
+          <div class="placeHolder">product is here click  users for data</div>
+          <div class="placeHolder">product is here click users for data</div>
+          <div class="placeHolder">product is here click users for data</div>
+          <div class="placeHolder">product is here click users  for data</div>
+          <div class="placeHolder">product is here click users for data</div>
           <!-- Existing users will be displayed here -->
         </div>
 
@@ -249,81 +231,41 @@
      <!-- /edit user  -->
 	 <!-- user section  -->
 	 <!-- admin section  -->
-	 <h1>admins</h1>
-	 <div id="adminsList">
-	   <!-- Existing admins will be displayed here -->
-	 </div>
 
-	 <div id="addAdmins" style="display: none">
-	   <h2>Add Admin</h2>
-	   <form id="addAdminsForm">
-		 <label for="adminName">Name:</label>
-		 <input type="text" id="adminName" required />
-
-		 <label for="adminEmail">Email:</label>
-		 <input type="email" id="adminEmail" required />
-
-		 <label for="adminId">Id:</label>
-		 <input type="number" id="adminId" required />
-
-		 <label for="accessLevel">accessLevel:</label>
-		 <input type="text" id="accessLevel" required />
-
-		 <label for="adminRole">Role:</label>
-		 <input type="text" id="adminRole" required />
-
-		 <button id="adminSubmit" type="submit">Add Admin</button>
-	   </form>
-	 </div>
-	 <!-- edit admin of the page-->
-	 <div id="editAdminDiv" style="display: none">
-	   <h2>Edit Admin</h2>
-	   <form id="editAdminForm">
-		 <label for="adminName">Name:</label>
-		 <input type="text" id="adminName" required />
-
-		 <label for="adminId">Id:</label>
-		 <input type="text" id="adminId" required />
-
-		 <label for="adminEmail">Email:</label>
-		 <input type="email" id="adminEmail" required />
-
-		 <label for="adminRole">role:</label>
-		 <input type="text" id="adminRole" required />
-
-		 <label for="accessLevel">access Level:</label>
-		 <input type="text" id="accessLevel" required />
-
-		 <button id="adminSubmit" type="submit">Edit admin</button>
-	   </form>
-	 </div>
 	 <!-- the end of admin section -->
 	 <!-- the start of books section >>>>>>>-->
    <h1>Books</h1>
    <div id="booksList">
+    <div class="placeHolder">product is here click Books  for data</div>
+    <div class="placeHolder">product is here click Books  for data</div>
+    <div class="placeHolder">product is here click Books  for data</div>
+    <div class="placeHolder">product is here click Books  for data</div>
      <!-- Existing books will be displayed here -->
    </div>
    
    <div id="addBookDiv" style="display: none">
      <h2>Add Book</h2>
      <form id="addBookForm">
-       <label for="addTitle">Title:</label>
-       <input type="text" id="addTitle" required />
-   
-       <label for="addBookId">Book ID:</label>
-       <input type="text" id="addBookId" required />
-   
-       <label for="addAuthor">Author:</label>
-       <input type="text" id="addAuthor" required />
-   
-       <label for="addGenre">Genre:</label>
-       <input type="text" id="addGenre" required />
-   
-       <label for="addYear">Year:</label>
-       <input type="text" id="addYear" required />
-   
-       <label for="addIsbn">ISBN:</label>
-       <input type="text" id="addIsbn" required />
+      <label for="addName">Name:</label>
+      <input type="text" id="addName"  />
+  
+      <label for="addBookId">Book ID:</label>
+      <input type="text" id="addBookId"  />
+  
+      <label for="addCategory">Category:</label>
+      <input type="text" id="addCategory"  />
+  
+      <label for="addSellingPrice">SellingPrice:</label>
+      <input type="number" id="addSellingPrice"  />
+  
+      <label for="addQuantity">Quantity:</label>
+      <input type="number" id="addQuantity"  />
+  
+      <label for="addDescription">Description:</label>
+      <input type="text" id="addDescription"  />
+
+      <label for="addImageURL">ImageURL:</label>
+      <input type="text" id="addImageURL"  />
    
        <button id="addBookSubmit" type="submit">Add Book</button>
      </form>
@@ -333,24 +275,27 @@
    <div id="editBookDiv" style="display: none">
      <h2>Edit Book</h2>
      <form id="editBookForm">
-       <label for="editTitle">Title:</label>
-       <input type="text" id="editTitle" required />
+       <label for="editName">Name:</label>
+       <input type="text" id="editName" required />
    
        <label for="editBookId">Book ID:</label>
        <input type="text" id="editBookId" required />
    
-       <label for="editAuthor">Author:</label>
-       <input type="text" id="editAuthor" required />
+       <label for="editCategory">Category:</label>
+       <input type="text" id="editCategory" required />
    
-       <label for="editGenre">Genre:</label>
-       <input type="text" id="editGenre" required />
+       <label for="editSellingPrice">SellingPrice:</label>
+       <input type="number" id="editSellingPrice" required />
    
-       <label for="editYear">Year:</label>
-       <input type="text" id="editYear" required />
+       <label for="editQuantity">Quantity:</label>
+       <input type="number" id="editQuantity" required />
    
-       <label for="editIsbn">ISBN:</label>
-       <input type="text" id="editIsbn" required />
-   
+       <label for="editDescription">Description:</label>
+       <input type="text" id="editDescription" required />
+
+       <label for="editImageURL">ImageURL:</label>
+       <input type="text" id="editImageURL" required />
+
        <button id="editBookSubmit" type="submit">Save Changes</button>
      </form>
    </div>
@@ -358,7 +303,10 @@
 	 <!-- end of book section -->
 	</main>
     </section>
-
+    <footer style="background-color: #f0f0f0; padding: 20px; text-align: center;">
+      <p>&copy; 2023 Your Admin Page. All rights reserved.</p>
+      <p>Contact: admin@example.com</p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

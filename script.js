@@ -1,5 +1,5 @@
 // SIDEBAR DROPDOWN
-
+document.addEventListener('DOMContentLoaded', function () {
 // note ? the fetch methods are provided for the add suer adn the delete suer 
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
@@ -80,69 +80,9 @@ window.addEventListener('click', function (e) {
         }
     }
 });
-// Rest of your code ...
-
-// Function to show the "Add User" form
-// ... (previous code remains the same)
-
-
-// Seven product objects
-const products = [
-    {
-      name: "Product 1",
-      id:1,
-      description: "Description for Product 1",
-      price: 19.99,
-      category: "Electronics",
-    },
-    {
-      name: "Product 2",
-      id:1,
-      description: "Description for Product 2",
-      price: 29.99,
-      category: "Clothing",
-    },
-    {
-      name: "Product 3",
-      id:1,
-      description: "Description for Product 3",
-      price: 9.99,
-      category: "Home & Kitchen",
-    },
-    {
-      name: "Product 4",
-      id:1,
-      description: "Description for Product 4",
-      price: 39.99,
-      category: "Beauty",
-    },
-    {
-      name: "Product 5",
-      id:1,
-      description: "Description for Product 5",
-      price: 49.99,
-      category: "Toys",
-    },
-    {
-      name: "Product 6",
-      id:1,
-      description: "Description for Product 6",
-      price: 14.99,
-      category: "Books",
-    },
-    {
-      name: "Product 7",
-      id:1,
-      description: "Description for Product 7",
-      price: 24.99,
-      category: "Sports & Outdoors",
-    },
-  ];
-  
 
 
   
-  // Now you have an array of seven product objects and an array of three admin objects
   
 
 // Function to show the "Add User" form
@@ -160,67 +100,10 @@ function showAddUserForm() {
   addUserLink.addEventListener('click', showAddUserForm);
   
   // Convert users, admins, and products to arrays
-  const  usersArray = [
-    {
-      name: "John Doe",
-      id:1,
-      email: "john.doe@example.com",
-      age: 30,
-      gender: "Male",
-      role: "Engineer",
-    },
-    {
-      name: "Jane Smith",
-      id:2,
-      email: "jane.smith@example.com",
-      age: 25,
-      gender: "Female",
-      role: "Designer",
-    },
-    // Add more objects as needed
-    {
-      name: "Alex Johnson",
-      id:3,
-      email: "alex.johnson@example.com",
-      age: 40,
-      gender: "Male",
-      role: "Manager",
-    },
-    {
-      name: "Emily Brown",
-      id:4,
-      email: "emily.brown@example.com",
-      age: 28,
-      gender: "Female",
-      role: "Developer",
-    },
-    {
-      name: "Michael Lee",
-      id:5,
-      email: "michael.lee@example.com",
-      age: 35,
-      gender: "Male",
-      role: "Analyst",
-    },
-    {
-      name: "Sophia Martinez",
-      id:6,
-      email: "sophia.martinez@example.com",
-      age: 27,
-      gender: "Female",
-      role: "Sales Representative",
-    },
-    {
-      name: "William Davis",
-      id:7,
-      email: "william.davis@example.com",
-      age: 32,
-      gender: "Male",
-      role: "Product Manager",
-    },
+ let  usersArray = [
+    
   ];
   
-  // Now you have an array of seven user objects with the specified properties
   
  
   
@@ -228,63 +111,52 @@ function showAddUserForm() {
   function createUserDiv(user) {
 	const userDiv = document.createElement('div');
 	userDiv.classList.add('user-item');
-  userDiv.setAttribute('userid',user.id)
-	userDiv.innerHTML = `
+  userDiv.setAttribute('userid',user._id)
+	if(user.type === 'user'){
+  userDiv.innerHTML = `
 	  <h3>${user.name}</h3>
-    <p>id:${user.id}</p>
+    <p>id:${user._id}</p>
 	  <p>Email: ${user.email}</p>
-	  <p>Age: ${user.age}</p>
-	  <p>Gender: ${user.gender}</p>
-	  <p>Role: ${user.role}</p>
-    <button id="deletebtn">delete</button>
-    <button id="editbtn">Edit</button>
-    
-
-	`;
-	usersList.appendChild(userDiv);
+	  <p>Age: ${user.address}</p>
+	  <p>Role: ${user.type}</p>
+    <button id="editbtn">Make Sub-Admin</button>
+	`
+  }else{
+  userDiv.innerHTML = `
+  <h3>${user.name}</h3>
+  <p>id:${user._id}</p>
+  <p>Email: ${user.email}</p>
+  <p>Age: ${user.address}</p>
+  <p>Role: ${user.type}</p>`
   }
-  
-  // async Loop through the users array and create user divs
-  usersArray.forEach(user => createUserDiv(user));
-  const userForm = document.querySelector('#addUserForm')
-userForm.addEventListener('submit',  (e)=>{
-	e.preventDefault();
-	const name = document.getElementById('name').value;
-	const email = document.getElementById('email').value;
-	const age = document.getElementById('age').value;
-	const gender = document.getElementById('gender').value;
-	const role = document.getElementById('role').value;
-	
-	const newUser = {
-		name, email, age, gender, role
-	}
-	// users[name]=newUser;
-	usersArray.push(newUser);
-	 document.getElementById('name').value=''
-	 document.getElementById('email').value=''
-	 document.getElementById('age').value=''
-	 document.getElementById('gender').value='male'
-	document.getElementById('role').value=''
-	createUserDiv(newUser)
-    // try{
-    //     const response = await fetch('api/user',{
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(newUser)
-    //     })
-    //     if (response.ok){
-    //         const data = await response.json()
-    //         console.log('user added success')
-    //     }else{
-    //         throw new Error(data.message)
-    //     }
-    // }catch(error){
-    //     console.log('error',error.message)
-    // }
+  usersList.appendChild(userDiv);
+}
+  const usersData = document.getElementById('usersData');
+  usersData.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try{
+      const response = await fetch('http://localhost:3000/api/mange/allUsers',{
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+            }
+      })
+      if (response.ok){
+          const data = await response.json()
+          console.log(data)
+          usersArray = data;
+          console.log(usersArray,'usersarray')
+         usersList.innerHTML = '';
+          usersArray.forEach(user => createUserDiv(user));
+      }
+    }catch(e){  
+        console.log('error',e.message)
+    }
+  })
 
-})
+
+
 
 
 
@@ -296,42 +168,13 @@ usersList.addEventListener('click', (e) => {
     const userDiv = deleteBtn.parentElement;
     console.log(userDiv);
 
-    const id = parseInt(userDiv.getAttribute('userid'), 10); // Retrieve the user ID from the 'userid' attribute
+    const id = parseInt(userDiv.getAttribute('userid'), 10); 
     console.log(id);
     const confirmDelete = confirm(`Are you sure you want to delete this user?${id}`);
-    deleteUser(id); // Pass the user ID directly to the deleteUser function
+    deleteUser(id); 
   }
 });
-function deleteUser(id) {
-  const index = usersArray.findIndex(ele => ele.id === id);
- 
 
-  if (index !== -1) {
-    // const confirmDelete = confirm(`Are you sure you want to delete this user?${id}`);
-    // if (confirmDelete) {
-    //   try {
-    //     // Send the delete fetch request to the backend
-    //     const response = await fetch(`api/user/${userId}`, {
-    //       method: 'DELETE',
-    //     });
-
-    //     if (response.ok) {
-    //       // If the server responds with a successful status code, update the UI
-    //       usersArray.splice(index, 1);
-    //       updateUi();
-    //       console.log('User deleted successfully from the database.');
-    //     } else {
-    //       console.error('Failed to delete user from the database.');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error occurred during the delete request:', error.message);
-    //   }
-    // }
-
-    usersArray.splice(index, 1);
-    updateUi();
-  }
-}
 
 function updateUi() {
   usersList.innerHTML = '';
@@ -343,23 +186,38 @@ function updateUi() {
 
 
 
-// usersArray.forEach(user => createUserDiv(user));
-//edit user >>>>>
 
 usersList.addEventListener(
-  'click',(e)=>{
+  'click', async (e)=>{
     const editBtn = e.target.closest('#editbtn');
-    console.log('Event Target:', e.target);
-    console.log('Edit Button:', editBtn);
+    console.log('Event Target@@@:', e.target);
+    console.log('Edit Button@@@:', editBtn);
     if (editBtn) {
       const userDiv = editBtn.parentElement;
         console.log(userDiv);
         const index = userDiv.getAttribute('userid');
-        console.log('index',typeof index)
-        const user =usersArray.find(ele=>ele.id === parseInt(index));
-        console.log("USER:",user );
-    editform(user);
+        console.log('index@@@',typeof index,index)
+        const user =usersArray.find(ele=>ele._id === index);
+        console.log("USER@@:",user );
+    
+    try {
+      const response = await fetch(`http://localhost:3000/api/mange/change/${index}`, {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json', // Add the Content-Type header to indicate JSON data
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+        }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        updateUi();
       }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  
+  }
   }
 )
 /**
@@ -368,16 +226,15 @@ usersList.addEventListener(
  * @param {object} user - The user object containing the user's information.
  * @return {undefined} This function does not return a value.
  */
-function editform(user){
+function editform(user,index){
 const editForm = document.getElementById('editForm');
 
 console.log(editUserForm)
 editForm.elements.name.value = user.name;
-editForm.elements.userId.value = user.id;
+editForm.elements.userId.value = user._id;
 editForm.elements.email.value = user.email;
-    editForm.elements.age.value = user.age ;
-    editForm.elements.gender.value = user.gender;
-    editForm.elements.role.value = user.gender;
+    editForm.elements.gender.value = user.address;
+    editForm.elements.role.value = user.type;
     divForm.style.display = 'block';
 
     // Optional: Scroll to the form for better user experience
@@ -387,334 +244,39 @@ editForm.elements.email.value = user.email;
 const divForm = document.getElementById('editUserForm')
 const editUserForm = document.getElementById('editForm');
 
-editUserForm.addEventListener('submit',(e)=>{
-  e.preventDefault();
-  const id = parseInt(editUserForm.elements.userId.value,10);
-  const index = usersArray.findIndex(ele=> ele.id === id);
-  const editedUser = {
-    name:editUserForm.elements.name.value,
-    id:editUserForm.elements.userId.value,
-    email:editUserForm.elements.email.value,
-    age:editUserForm.elements.age.value,
-    gender:editUserForm.elements.gender.value,
-    role:editUserForm.elements.role.value
-  }
-  usersArray[index]=editedUser;
-//   try {
-//     const response = await fetch(`/api/users/${userData.id}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(userData)
-//     });
-
-//     if (!response.ok) {
-//       throw new Error('Failed to update user on the server.');
-//     }
-
-//     const updatedUser = await response.json();
-//     return updatedUser; // Optional: You can return the updated user data if needed
-//   } catch (error) {
-//     console.error('Error updating user on the server:', error);
-//     throw error; // Rethrow the error to handle it at the calling function
-//   }
-// }
-  updateUi();
-  divForm.style.display = 'none'; 
-})
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>admin part 
-    // Three admin objects 
-   const adminsArray = [
-    {
-      name: "John Doe",
-      id:1,
-      role: "Content Manager",
-      email: "john.doe@example.com",
-      accessLevel: "Admin",
-    },
-    {
-      name: "Jane Smith",
-      id:2,
-      role: "Security Administrator",
-      email: "jane.smith@example.com",
-      accessLevel: "Super Admin",
-    },
-    {
-      name: "Mike Johnson",
-      id:3,
-      role: "SEO Specialist",
-      email: "mike.johnson@example.com",
-      accessLevel: "Editor",
-    },
-  ];
+let  booksArray = [
   
-
-  
-function showAddAdminForm() {
-	const addAdminForm = document.getElementById('addAdmins');
-	addAdminForm.style.display = 'block';
-	setTimeout(() => {
-	  addAdminForm.scrollIntoView({ behavior: 'smooth' });
-	}, 100); // Adjust the delay as needed
-  }
-  
-  
-  // Event listener to trigger the "Add Admin" form display
-  const addAdminLink = document.querySelector('.addAdmin');
-  addAdminLink.addEventListener('click', showAddAdminForm);
-  
-  // Convert Admins, admins, and products to arrays
- 
-  // Now you have an array of seven Admin objects with the specified properties
-  
-
-  
-  // Function to create Admin div
-  const adminsList = document.getElementById('adminsList')
-  function createAdminDiv(admin) {
-	const adminDiv = document.createElement('div');
-	adminDiv.classList.add('admin-item');
-  adminDiv.setAttribute('adminid',admin.id)
-	adminDiv.innerHTML = `
-	  <h3>${admin.name}</h3>
-    <p>id:${admin.id}</p>
-	  <p>Email: ${admin.email}</p>
-	  <p>Role: ${admin.role}</p>
-	  <p>access Level: ${admin.accessLevel}</p>
-    <button id="deletebtn">delete</button>
-    <button id="editbtn">Edit</button>
-    
-
-	`;
-	adminsList.appendChild(adminDiv);
-  }
-  
-  // async Loop through the admins array and create admin divs
-  adminsArray.forEach(admin => createAdminDiv(admin));
-  
-  const adminsForm = document.querySelector('#addAdmins')
-adminsForm.addEventListener('submit',  (e)=>{
-	e.preventDefault();
-	const name = document.getElementById('adminName').value;
-	const email = document.getElementById('adminEmail').value;
-	const id = document.getElementById('adminId').value;
-	const accessLevel = document.getElementById('accessLevel').value;
-	const role = document.getElementById('adminRole').value;
-	
-	const newAdmin = {
-		name,id, email, accessLevel, role
-	}
-  console.log(newAdmin)
-	// users[name]=newUser;
-	adminsArray.push(newAdmin);
- 
-	 document.getElementById('adminName').value=''
-	 document.getElementById('adminEmail').value=''
-	 document.getElementById('accessLevel').value=''
-	 document.getElementById('adminId').value=''
-	document.getElementById('adminRole').value=''
-	 createAdminDiv(newAdmin)
-    // try{
-    //     const response = await fetch('api/admin',{
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(newAdmin)
-    //     })
-    //     if (response.ok){
-    //         const data = await response.json()
-    //         console.log('admin added success')
-    //     }else{
-    //         throw new Error(data.message)
-    //     }
-    // }catch(error){
-    //     console.log('error',error.message)
-    // }
-
-})
-
-
-
-adminsList.addEventListener('click', (e) => {
-  const deleteBtn = e.target.closest('#deletebtn');
-  console.log('Event Target:', e.target);
-  console.log('Delete Button:', deleteBtn);
-  if (deleteBtn) {
-    const adminDiv = deleteBtn.parentElement;
-    console.log(adminDiv);
-
-    const id = parseInt(adminDiv.getAttribute('adminid'), 10); // Retrieve the admin ID from the 'adminid' attribute
-    console.log(id);
-    const confirmDelete = confirm(`Are you sure you want to delete this admin?${id}`);
-    deleteAdmin(id); // Pass the user ID directly to the deleteUser function
-  }
-});
-function deleteAdmin(id) {
-  const index = adminsArray.findIndex(ele => ele.id === id);
- 
-
-  if (index !== -1) {
-    // const confirmDelete = confirm(`Are you sure you want to delete this user?${id}`);
-    // if (confirmDelete) {
-    //   try {
-    //     // Send the delete fetch request to the backend
-    //     const response = await fetch(`api/user/${userId}`, {
-    //       method: 'DELETE',
-    //     });
-
-    //     if (response.ok) {
-    //       // If the server responds with a successful status code, update the UI
-    //       usersArray.splice(index, 1);
-    //       updateUi();
-    //       console.log('User deleted successfully from the database.');
-    //     } else {
-    //       console.error('Failed to delete user from the database.');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error occurred during the delete request:', error.message);
-    //   }
-    // }
-
-   adminsArray.splice(index, 1);
-    updateUi();
-  }
-}
-
-function updateUi() {
- adminsList.innerHTML = '';
- adminsArray.forEach(admin => {
-    createAdminDiv(admin);
-  });
-}
-
-
-
-
-//adminsArray.forEach(admin => createadminDiv(admin));
-//edit admin >>>>>
-
-adminsList.addEventListener(
-  'click',(e)=>{
-    const editBtn = e.target.closest('#editbtn');
-    console.log('Event Target:', e.target);
-    console.log('Edit Button:', editBtn);
-    if (editBtn) {
-      const adminDiv = editBtn.parentElement;
-        console.log(adminDiv);
-        const index = adminDiv.getAttribute('adminid');
-        console.log('index',typeof index)
-        const admin =adminsArray.find(ele=>ele.id === parseInt(index));
-        console.log("admin:",admin );
-    editform(admin);
-      }
-  }
-)
-/**
- * Edits the admin form.
- *
- * @param {object} admin - The admin object containing the admin's information.
- * @return {undefined} This function does not return a value.
- */
-function editform(admin){
-const editAdminForm = document.getElementById('editAdminForm');
-console.log('admin in edit form',admin.name,editAdminForm)
-console.log(editAdminForm)
-editAdminForm.elements.adminName.value = admin.name;
-editAdminForm.elements.adminId.value = admin.id;
-editAdminForm.elements.adminEmail.value = admin.email;
-    editAdminForm.elements.accessLevel.value = admin.accessLevel ;
-    editAdminForm.elements.adminRole.value = admin.role;
-    editAdminDiv.style.display = 'block';
-
-    // Optional: Scroll to the form for better user experience
-    editAdminDiv.scrollIntoView({ behavior: 'smooth' });
-
-}
-const editAdminDiv = document.getElementById('editAdminDiv')
-const editAdminForm = document.getElementById('editAdminForm');
-
-editAdminForm.addEventListener('submit',(e)=>{
-  e.preventDefault();
-  const id = parseInt(editAdminForm.elements.adminId.value,10);
-  const index =adminsArray.findIndex(ele=> ele.id === id);
-  const editedUser = {
-    name:editAdminForm.elements.adminName.value,
-    id:editAdminForm.elements.adminId.value,
-    email:editAdminForm.elements.adminEmail.value,
-    accessLevel:editAdminForm.elements.accessLevel.value,
-    
-    role:editAdminForm.elements.adminRole.value
-  }
- adminsArray[index]=editedUser;
-//   try {
-//     const response = await fetch(`/api/admins/${adminData.id}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(adminData)
-//     });
-
-//     if (!response.ok) {
-//       throw new Error('Failed to update admin on the server.');
-//     }
-
-//     const updatedAdmin = await response.json();
-//     return updatedAdmin; // Optional: You can return the updated admin data if needed
-//   } catch (error) {
-//     console.error('Error updating admin on the server:', error);
-//     throw error; // Rethrow the error to handle it at the calling function
-//   }
-// }
-  updateUi();
-  editAdminDiv.style.display = 'none'; 
-})
-
-// >>>>>>>> section of books     <<<<<<<<<
-const booksArray = [
-  {
-    title: "The Great Gatsby",
-    id:1,
-    author: "F. Scott Fitzgerald",
-    genre: "Fiction",
-    year: 1925,
-    isbn: "9780743273565",
-  },
-  {
-    title: "To Kill a Mockingbird",
-    id:2,
-    author: "Harper Lee",
-    genre: "Fiction",
-    year: 1960,
-    isbn: "9780061120084",
-  },
-  {
-    title: "1984",
-    id:3,
-    author: "George Orwell",
-    genre: "Fiction",
-    year: 1949,
-    isbn: "9780451524935",
-  },
-  {
-    title: "The Hobbit",
-    id:4,
-    author: "J.R.R. Tolkien",
-    genre: "Fantasy",
-    year: 1937,
-    isbn: "9780547928227",
-  },
-  {
-    title: "Pride and Prejudice",
-    id:5,
-    author: "Jane Austen",
-    genre: "Fiction",
-    year: 1813,
-    isbn: "9780486284736",
-  },
 ];
+const booksData = document.getElementById('booksData');
+booksData.addEventListener('click', async (e) => {
+  
+  try{
+    const response = await fetch(`http://localhost:3000/api/store/books`, {
+      method: 'GET',
+    });
+    const data = await response.json();
+    console.log(data , typeof data);
+    booksArray = [...data];
+    console.log('booksArray',booksArray);
+    booksArray.forEach(book => createBookDiv(book));
+
+  }catch (error) {
+    console.error('Error:', error);
+  }
+})
+// const book =[
+//   {
+//     "_id": "64c5365e421bd4eddeea2bc1",
+//     "name": "Book XY1",
+//     "sellingPrice": 25,
+//     "category": "Fantasy",
+//     "description": "Beautiful and very special book",
+//     "imageURL": "https://picsum.photos/200",
+//     "quantity": 100,
+//     "__v": 0
+//   },
+  
+// ]
 function showAddBookForm() {
   const addBookForm = document.getElementById('addBookDiv');
   addBookForm.style.display = 'block';
@@ -732,16 +294,17 @@ const booksList = document.getElementById('booksList');
 function createBookDiv(book) {
   const bookDiv = document.createElement('div');
   bookDiv.classList.add('book-item');
-  bookDiv.setAttribute('bookid', book.id);
+  bookDiv.setAttribute('bookid', book._id);
   bookDiv.innerHTML = `
-    <h3>${book.title}</h3>
-    <p>ID: ${book.id}</p>
-    <p>Author: ${book.author}</p>
-    <p>Genre: ${book.genre}</p>
-    <p>Year: ${book.year}</p>
-    <p>ISBN: ${book.isbn}</p>
+    <h3>${book.name}</h3>
+    <p>ID: ${book._id}</p>
+    <p>category: ${book.category}</p>
+    <p>selling price: ${book.sellingPrice}</p>
+    <p>quantity: ${book.quantity}</p>
+    <p>description: ${book.description}</p>
+    <p></p><img src="${book.imageURL}" alt="bookImage"></p>
     <button id="deletebtn">Delete</button>
-    <button id="editbtn">Edit</button>
+    <button id="editBookbtn">Edit</button>
   `;
   booksList.appendChild(bookDiv);
 }
@@ -750,28 +313,41 @@ function createBookDiv(book) {
 booksArray.forEach(book => createBookDiv(book));
 
 const addBookForm = document.getElementById('addBookForm');
-addBookForm.addEventListener('submit', (e) => {
+addBookForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const title = document.getElementById('addTitle').value;
+  const title = document.getElementById('addName').value;
   const bookId = document.getElementById('addBookId').value;
-  const author = document.getElementById('addAuthor').value;
-  const genre = document.getElementById('addGenre').value;
-  const year = document.getElementById('addYear').value;
-  const isbn = document.getElementById('addIsbn').value;
+  const Category = document.getElementById('addCategory').value;
+  const SellingPrice = parseInt(document.getElementById('addSellingPrice').value);
+   const Quantity = parseInt(document.getElementById('addQuantity').value);
+  const Description = document.getElementById('addDescription').value;
+  const ImageURL = document.getElementById('addImageURL').value;
 
   const newBook = {
-    title,
-    id: parseInt(bookId, 10),
-    author,
-    genre,
-    year,
-    isbn,
-  };
+    "name": title,
+     "costPrice": 15,
+      "sellingPrice": SellingPrice,
+       "category": Category,
+    "description": Description, 
+    "imageURL": ImageURL, 
+    "quantity": Quantity 
+}
+
+try {
+  const response = await fetch(`http://localhost:3000/api/mange/books`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json', // Add the Content-Type header to indicate JSON data
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+    },
+    body: JSON.stringify(newBook) // Convert newBook object to JSON string
+  });
+} catch (error) {
+  console.error('Error:', error);
+}
 
   booksArray.push(newBook);
-
-  // Clear form inputs
-  addBookForm.reset();
+ 
 
   createBookDiv(newBook);
 });
@@ -780,27 +356,53 @@ booksList.addEventListener('click', (e) => {
   const deleteBtn = e.target.closest('#deletebtn');
   if (deleteBtn) {
     const bookDiv = deleteBtn.parentElement;
-    const id = parseInt(bookDiv.getAttribute('bookid'), 10);
-    const confirmDelete = confirm(`Are you sure you want to delete this book? ID: ${id}`);
+    const id = bookDiv.getAttribute('bookid');
+    console.log('the id',id)
+    const book = booksArray.find(book => book._id === id);
+    const confirmDelete = confirm(`Are you sure you want to delete this book?  ${book.name}`);
     if (confirmDelete) {
       deleteBook(id);
     }
   }
 });
 
-function deleteBook(id) {
-  const index = booksArray.findIndex(book => book.id === id);
+async function deleteBook(id) {
+  const index = booksArray.findIndex(book => book._id === id);
+  try {
+    const response = await fetch(`http://localhost:3000/api/mange/books/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json', // Add the Content-Type header to indicate JSON data
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+      }// Convert newBook object to JSON string
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
   if (index !== -1) {
     booksArray.splice(index, 1);
     updateBooksUI();
   }
 }
 
-function updateBooksUI() {
+async function updateBooksUI() {
   booksList.innerHTML = '';
-  booksArray.forEach(book => {
-    createBookDiv(book);
-  });
+  try{
+    const response = await fetch(`http://localhost:3000/api/store/books`, {
+      method: 'GET',
+    });
+    const data = await response.json();
+    console.log(data , typeof data);
+    booksArray = [...data];
+    console.log('booksArray',booksArray);
+    booksArray.forEach(book => createBookDiv(book));
+
+  }catch (error) {
+    console.error('Error:', error);
+  }
+  // booksArray.forEach(book => {
+  //   createBookDiv(book);
+  // });
 }
 
 // Edit book section
@@ -808,38 +410,56 @@ const editBookDiv = document.getElementById('editBookDiv');
 const editBookForm = document.getElementById('editBookForm');
 
 function editBook(book) {
-  editBookForm.elements.editTitle.value = book.title;
-  editBookForm.elements.editBookId.value = book.id;
-  editBookForm.elements.editAuthor.value = book.author;
-  editBookForm.elements.editGenre.value = book.genre;
-  editBookForm.elements.editYear.value = book.year;
-  editBookForm.elements.editIsbn.value = book.isbn;
+  editBookForm.elements.editName.value = book.name;
+  editBookForm.elements.editBookId.value = book._id;
+  editBookForm.elements.editCategory.value = book.category;
+  editBookForm.elements.editSellingPrice.value = book.sellingPrice;
+  editBookForm.elements.editQuantity.value = book.quantity;
+  editBookForm.elements.editDescription.value = book.description;
+  editBookForm.elements.editImageURL.value = book.imageURL;
   editBookDiv.style.display = 'block';
   editBookDiv.scrollIntoView({ behavior: 'smooth' });
 }
 
 booksList.addEventListener('click', (e) => {
-  const editBtn = e.target.closest('#editbtn');
+  const editBtn = e.target.closest('#editBookbtn');
+  console.log('Event Target:', e.target);
+  console. log(editBtn);
   if (editBtn) {
     const bookDiv = editBtn.parentElement;
-    const id = parseInt(bookDiv.getAttribute('bookid'), 10);
-    const book = booksArray.find(book => book.id === id);
+    const id = bookDiv.getAttribute('bookid');
+    console.log(id);
+    const book = booksArray.find(book => book._id === id);
+    console.log(book);
     editBook(book);
   }
 });
 
-editBookForm.addEventListener('submit', (e) => {
+ editBookForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const id = parseInt(editBookForm.elements.editBookId.value, 10);
-  const index = booksArray.findIndex(book => book.id === id);
+  const _id = editBookForm.elements.editBookId.value;
+  const index = booksArray.findIndex(book => book._id === _id);
   const editedBook = {
-    title: editBookForm.elements.editTitle.value,
-    id,
-    author: editBookForm.elements.editAuthor.value,
-    genre: editBookForm.elements.editGenre.value,
-    year: editBookForm.elements.editYear.value,
-    isbn: editBookForm.elements.editIsbn.value,
+    "name": editBookForm.elements.editName.value,
+    "_id":_id,
+    "costPrice":125,
+    "category": editBookForm.elements.editCategory.value,
+    "sellingPrice": editBookForm.elements.editSellingPrice.value,
+    "quantity": editBookForm.elements.editQuantity.value,
+    "description": editBookForm.elements.editDescription.value,
+    "imageURL": editBookForm.elements.editImageURL.value,
   };
+  try {
+    const response = await fetch(`http://localhost:3000/api/mange/books/${_id}`, {
+      method: 'Put',
+      headers: {
+        'Content-Type': 'application/json', // Add the Content-Type header to indicate JSON data
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+      },body: JSON.stringify(editedBook)
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
   booksArray[index] = editedBook;
   updateBooksUI();
   editBookDiv.style.display = 'none';
@@ -854,3 +474,211 @@ editBookForm.addEventListener('submit', (e) => {
 // const searchYear = 1960;
 // const foundBooks = searchBooksByYear(searchYear);
 // console.log(foundBooks);
+// 
+
+//???????????????????????????????????????????????????????
+
+
+// >>>>>>>search part 
+// Assuming you have three arrays: booksArray, usersArray, and adminsArray
+
+const searchInput = document.getElementById('searchInput');
+const searchResultsContainer = document.getElementById('searchResultsContainer');
+
+// Function to perform the search and filter the data
+function searchAndFilterData(searchTerm) {
+  const filteredData = [];
+
+  // Search in the booksArray
+  booksArray.forEach(book => {
+    if (fuzzyMatch(book.title, searchTerm) || fuzzyMatch(book.author, searchTerm) || fuzzyMatch(book.genre, searchTerm)) {
+      filteredData.push(book);
+    }
+  });
+
+  // Search in the usersArray
+  usersArray.forEach(user => {
+    if (fuzzyMatch(user.name, searchTerm) || fuzzyMatch(user.email, searchTerm)) {
+      filteredData.push(user);
+    }
+  });
+
+  // Search in the adminsArray
+  adminsArray.forEach(admin => {
+    if (fuzzyMatch(admin.name, searchTerm) || fuzzyMatch(admin.email, searchTerm)) {
+      filteredData.push(admin);
+    }
+  });
+
+  return filteredData;
+}
+
+// Function to check for a fuzzy match
+function fuzzyMatch(str, searchTerm) {
+  const regex = new RegExp(searchTerm.split('').join('.*'), 'i');
+  return str.match(regex);
+}
+
+// Function to display the search results
+function displaySearchResults(results) {
+  searchResultsContainer.innerHTML = '';
+
+  results.forEach(result => {
+    const resultDiv = document.createElement('div');
+    resultDiv.classList.add('search-result');
+    // Customize the content based on the type of object (book, user, or admin)
+    if (result.hasOwnProperty('title')) {
+      resultDiv.innerHTML = `<h1>Search Results</h1>
+      <div id="result1">
+        <h3>${result.title}</h3>
+        <p>Author: ${result.author}</p>
+        <p>Genre: ${result.genre}</p>
+        <button class="add-btn">Add</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      `;
+    } else if (result.hasOwnProperty('name')) {
+      resultDiv.innerHTML = `<h1>search results</h1>
+      <div id="result2"> 
+      <h3>${result.name}</h3>
+      <p>Email: ${result.email}</p>
+      <p>Role: ${result.role}</p>
+      </div>`;
+    }
+    searchResultsContainer.appendChild(resultDiv);
+  });
+}
+
+// Event listener for the search input
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.trim();
+  if (searchTerm !== '') {
+    const results = searchAndFilterData(searchTerm);
+    displaySearchResults(results);
+  } else {
+    searchResultsContainer.innerHTML = '';
+  }
+});
+
+// get the total number of books
+async function fetchTotalBooks() {
+  try {
+    const response = await fetch('http://localhost:3000/api/mange/countBooks',{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+
+    }}
+    );
+    const data = await response.json();
+    console.log(data);
+    return data.totalBooks
+    ;
+  } catch (error) {
+    console.error('Error fetching total number of books:', error);
+    return 0;
+  }
+}
+
+// Function to update the total number of books on the page
+async function updateTotalBooks() {
+  const totalBooks = await fetchTotalBooks();
+  document.getElementById('totalBooks').textContent = totalBooks;
+}
+
+// Initial update and set interval to update every minute (60000 milliseconds)
+updateTotalBooks();
+setInterval(updateTotalBooks, 6000);
+///???????????????????????????????
+async function fetchTotalUsers() {
+  try {
+    const response = await fetch('http://localhost:3000/api/mange/countUsers',{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+
+    }}
+    );
+    const data = await response.json();
+    console.log(data.totalUsers,'users');
+    return data.totalUsers
+    ;
+  } catch (error) {
+    console.error('Error fetching total number of users:', error);
+    return 0;
+  }
+}
+
+// Function to update the total number of books on the page
+async function updateTotalUsers() {
+  const users = await fetchTotalUsers();
+  document.getElementById('totalUsers').textContent = users;
+}
+
+// Initial update and set interval to update every minute (60000 milliseconds)
+updateTotalUsers();
+setInterval(updateTotalUsers, 6000);
+///???????????????????????
+async function fetchTotalOrders() {
+  try {
+    const response = await fetch('http://localhost:3000/api/mange/countOrders',{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+
+    }}
+    );
+    const data = await response.json();
+    ;
+    return data.totalOrders
+    ;
+  } catch (error) {
+    console.error('Error fetching total number of books:', error);
+    return 0;
+  }
+}
+
+// Function to update the total number of books on the page
+async function updateTotalOrders() {
+  const orders = await fetchTotalOrders();
+  document.getElementById('totalOrders').textContent = orders;
+}
+
+// Initial update and set interval to update every minute (60000 milliseconds)
+updateTotalOrders();
+setInterval(updateTotalOrders, 6000);
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+async function fetchTotalProfit() {
+  try {
+    const response = await fetch('http://localhost:3000/api/mange/totalProfit',{
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM5MWNjOGZhMzNlZTlmNDFmYTg4ODMiLCJpYXQiOjE2OTA5MDE3MDQsImV4cCI6MTcyNjkwMTcwNH0.QpudSuJlfwDjYtXY-wobDjxFs-jJIGB94mBJRZ1h47w'
+
+    }}
+    );
+    const data = await response.json();
+    ;
+    console.log(data)
+    return data.totalProfit
+    ;
+  } catch (error) {
+    console.error('Error fetching total number of books:', error);
+    return 0;
+  }
+}
+
+// Function to update the total number of books on the page
+async function updateTotalProfit() {
+  const profit = await fetchTotalProfit();
+  document.getElementById('totalProfit').textContent = profit;
+}
+
+// Initial update and set interval to update every minute (60000 milliseconds)
+updateTotalProfit();
+setInterval(updateTotalProfit, 6000);
+});
