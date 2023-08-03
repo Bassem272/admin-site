@@ -1,215 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-	<title>AdminSite</title>
-</head>
-<body>
-	
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
-		<ul class="side-menu">
-			<li><a href="./index.html" class=""><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li><a href="./users.html" class=" active"><i class='bx bxs-dashboard icon' ></i>User Management</a></li>
-			<li class="divider" data-text="main">Main</li>
-			<li>
-				<a href="#"><i class='bx bxs-inbox icon' ></i> Admins <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a href="#">Add admin</a></li>
-					<li><a href="#">Delete admin</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#"><i class='bx bxs-inbox icon' ></i> Users <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li ><a href = '#'class="addUser" >Add user</a></li>
-					<li><a href="#">Delete user</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#"><i class='bx bxs-inbox icon' ></i> Products <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a href="#">Add Product</a></li>
-					<li><a href="#">Delete Product</a></li>
-				</ul>
-			</li>
-			<li><a href="#"><i class='bx bxs-chart icon' ></i> Charts</a></li>
-			<li><a href="#"><i class='bx bxs-widget icon' ></i> Widgets</a></li>
-			<li class="divider" data-text="table and forms">Table and forms</li>
-			<li><a href="#"><i class='bx bx-table icon' ></i> Tables</a></li>
-			<li>
-				<a href="#"><i class='bx bxs-notepad icon' ></i> Forms <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a href="#">Basic</a></li>
-					<li><a href="#">Select</a></li>
-					<li><a href="#">Checkbox</a></li>
-					<li><a href="#">Radio</a></li>
-				</ul>
-			</li>
-		</ul>
-		<div class="ads">
-			<div class="wrapper">
-				<a href="#" class="btn-upgrade">Upgrade</a>
-				<p>Become a <span>PRO</span> member and enjoy <span>All Features</span></p>
-			</div>
-		</div>
-	</section>
-	<!-- SIDEBAR -->
+    <title>AdminSite</title>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <a href="#" class="brand"><i class="bx bxs-smile icon"></i> AdminSite</a>
+      <ul class="side-menu">
+        <li>
+          <a href="./index.html" class=""
+            ><i class="bx bxs-dashboard icon"></i> Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="./users.html" class="active"
+            ><i class="bx bxs-dashboard icon"></i>User Management</a
+          >
+        </li>
+        <li class="divider" data-text="main">Main</li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Admins
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#" class="addAdmin">Add admin</a></li>
+            <li><a href="#">Delete admin</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i> Users
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#" class="addUser">Add user</a></li>
+            <li><a href="#">Delete user</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-inbox icon"></i>Books
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#" class="addBook">Add Book</a></li>
+            <li><a href="#">Delete Product</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><i class="bx bxs-chart icon"></i> Charts</a>
+        </li>
+        <li>
+          <a href="#"><i class="bx bxs-widget icon"></i> Widgets</a>
+        </li>
+        <li class="divider" data-text="table and forms">Table and forms</li>
+        <li>
+          <a href="#"><i class="bx bx-table icon"></i> Tables</a>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="bx bxs-notepad icon"></i> Forms
+            <i class="bx bx-chevron-right icon-right"></i
+          ></a>
+          <ul class="side-dropdown">
+            <li><a href="#">Basic</a></li>
+            <li><a href="#">Select</a></li>
+            <li><a href="#">Checkbox</a></li>
+            <li><a href="#">Radio</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="ads">
+        <div class="wrapper">
+          <a href="#" class="btn-upgrade">Upgrade</a>
+          <p>
+            Become a <span>PRO</span> member and enjoy <span>All Features</span>
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- SIDEBAR -->
 
-	<!-- NAVBAR -->
-	<section id="content">
-		<!-- NAVBAR -->
-		<nav>
-			<i class='bx bx-menu toggle-sidebar' ></i>
-			<form action="#">
-				<div class="form-group">
-					<input type="text" placeholder="Search...">
-					<i class='bx bx-search icon' ></i>
-				</div>
-			</form>
-			<a href="#" class="nav-link">
-				<i class='bx bxs-bell icon' ></i>
-				<span class="badge">5</span>
-			</a>
-			<a href="#" class="nav-link">
-				<i class='bx bxs-message-square-dots icon' ></i>
-				<span class="badge">8</span>
-			</a>
-			<span class="divider"></span>
-			<div class="profile">
-				<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-				<ul class="profile-link">
-					<li><a href="#"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
-					<li><a href="#"><i class='bx bxs-cog' ></i> Settings</a></li>
-					<li><a href="#"><i class='bx bxs-log-out-circle' ></i> Logout</a></li>
-				</ul>
-			</div>
-		</nav>
-		<!-- NAVBAR -->
-		<main>
-			<h1 class="title">User Management</h1>
-			<ul class="breadcrumbs">
-				<li><a href="#">Home</a></li>
-				<li class="divider">/</li>
-				<li><a href="#" class="active"> Management </a></li>
-			</ul>
-			<!-- first part of page -->
-			<div class="info-data">
-				<div class="card">
-					<div class="head">
-						<div>
-							<h2>1500</h2>
-							<p>Traffic</p>
-						</div>
-						<i class='bx bx-trending-up icon' ></i>
-					</div>
-					<span class="progress" data-value="40%"></span>
-					<span class="label">40%</span>
-				</div>
-				<div class="card">
-					<div class="head">
-						<div>
-							<h2>234</h2>
-							<p>Sales</p>
-						</div>
-						<i class='bx bx-trending-down icon down' ></i>
-					</div>
-					<span class="progress" data-value="60%"></span>
-					<span class="label">60%</span>
-				</div>
-				<div class="card">
-					<div class="head">
-						<div>
-							<h2>465</h2>
-							<p>Pageviews</p>
-						</div>
-						<i class='bx bx-trending-up icon' ></i>
-					</div>
-					<span class="progress" data-value="30%"></span>
-					<span class="label">30%</span>
-				</div>
-				<div class="card">
-					<div class="head">
-						<div>
-							<h2>235</h2>
-							<p>Visitors</p>
-						</div>
-						<i class='bx bx-trending-up icon' ></i>
-					</div>
-					<span class="progress" data-value="80%"></span>
-					<span class="label">80%</span>
-				</div>
-			</div>
-			<!-- first part of page -->
-			
-			<!-- second part of page  -->
-			
-			<h1>Users</h1>
-	
-	
-		<div id="usersList">
-			<!-- Existing users will be displayed here -->
-		  </div>
-	  
-		  <div id="addUserForm" style="display:none">
-			<h2>Add User</h2>
-			<form id="userForm">
-			  <label for="name">Name:</label>
-			  <input type="text" id="name" required>
-	  
-			  <label for="email">Email:</label>
-			  <input type="email" id="email" required>
-	  
-			  <label for="age">Age:</label>
-			  <input type="number" id="age" required>
-	  
-			  <label for="gender">Gender:</label>
-			  <select id="gender" required>
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				<option value="other">Other</option>
-			  </select>
-	  
-			  <label for="role">Role:</label>
-			  <input type="text" id="role" required>
-	  
-			  <button id='userSubmit'type="submit">Add User</button>
-			</form>
-		  </div>
-		  <!-- third part of the page-->
-		  <div id="editUserForm" style="display:none">
-			<h2>Add User</h2>
-			<form id="editForm">
-			  <label for="name">Name:</label>
-			  <input type="text" id="name" required>
-	  
-			  <label for="email">Email:</label>
-			  <input type="email" id="email" required>
-	  
-			  <label for="age">Age:</label>
-			  <input type="number" id="age" required>
-	  
-			  <label for="gender">Gender:</label>
-			  <select id="gender" required>
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				<option value="other">Other</option>
-			  </select>
-	  
-			  <label for="role">Role:</label>
-			  <input type="text" id="role" required>
-	  
-			  <button id='userSubmit'type="submit">Add User</button>
-			</form>
-		  </div>
-		</main>
+    <!-- NAVBAR -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu toggle-sidebar"></i>
+        <form action="#">
+          <div class="form-group">
+            <input type="text" placeholder="Search..." />
+            <i class="bx bx-search icon"></i>
+          </div>
+        </form>
+        <a href="#" class="nav-link">
+          <i class="bx bxs-bell icon"></i>
+          <span class="badge">5</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="bx bxs-message-square-dots icon"></i>
+          <span class="badge">8</span>
+        </a>
+        <span class="divider"></span>
+        <div class="profile">
+          <img
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt=""/>
+          <ul class="profile-link">
+            <li>
+              <a href="#"><i class="bx bxs-user-circle icon"></i> Profile</a>
+            </li>
+            <li>
+              <a href="#"><i class="bx bxs-cog"></i> Settings</a>
+            </li>
+            <li>
+              <a href="#"><i class="bx bxs-log-out-circle"></i> Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- NAVBAR -->
+      <main>
+        <h1 class="title">User Management</h1>
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li class="divider">/</li>
+          <li><a href="#" class="active"> Management </a></li>
+        </ul>
+        <!-- first part of page -->
+        <div class="info-data">
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>1500</h2>
+                <p>Traffic</p>
+              </div>
+              <i class="bx bx-trending-up icon"></i>
+            </div>
+            <span class="progress" data-value="40%"></span>
+            <span class="label">40%</span>
+          </div>
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>234</h2>
+                <p>Sales</p>
+              </div>
+              <i class="bx bx-trending-down icon down"></i>
+            </div>
+            <span class="progress" data-value="60%"></span>
+            <span class="label">60%</span>
+          </div>
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>465</h2>
+                <p>Pageviews</p>
+              </div>
+              <i class="bx bx-trending-up icon"></i>
+            </div>
+            <span class="progress" data-value="30%"></span>
+            <span class="label">30%</span>
+          </div>
+          <div class="card">
+            <div class="head">
+              <div>
+                <h2>235</h2>
+                <p>Visitors</p>
+              </div>
+              <i class="bx bx-trending-up icon"></i>
+            </div>
+            <span class="progress" data-value="80%"></span>
+            <span class="label">80%</span>
+          </div>
+        </div>
+        <!-- first part of page -->
+
+        <!-- second part of page  -->
+
+        <h1>Users</h1>
+        <div id="usersList">
+          <!-- Existing users will be displayed here -->
+        </div>
+
+        <div id="addUserForm" style="display: none">
+          <h2>Add User</h2>
+          <form id="userForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required />
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required />
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label for="role">Role:</label>
+            <input type="text" id="role" required />
+
+            <button id="userSubmit" type="submit">Add User</button>
+          </form>
+        </div>
+        <!-- edtit user of the page-->
+        <div id="editUserForm" style="display: none">
+          <h2>Add User</h2>
+          <form id="editForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required />
+
+            <label for="userId">Id:</label>
+            <input type="text" id="userId" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required />
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required />
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label for="role">Role:</label>
+            <input type="text" id="role" required />
+
+            <button id="userSubmit" type="submit">Edit User</button>
+          </form>
+        </div>
+     <!-- /edit user  -->
+	 <!-- user section  -->
+	 <!-- admin section  -->
+	 <h1>admins</h1>
+	 <div id="adminsList">
+	   <!-- Existing admins will be displayed here -->
+	 </div>
+
+	 <div id="addAdmins" style="display: none">
+	   <h2>Add Admin</h2>
+	   <form id="addAdminsForm">
+		 <label for="adminName">Name:</label>
+		 <input type="text" id="adminName" required />
+
+		 <label for="adminEmail">Email:</label>
+		 <input type="email" id="adminEmail" required />
+
+		 <label for="adminId">Id:</label>
+		 <input type="number" id="adminId" required />
+
+		 <label for="accessLevel">accessLevel:</label>
+		 <input type="text" id="accessLevel" required />
+
+		 <label for="adminRole">Role:</label>
+		 <input type="text" id="adminRole" required />
+
+		 <button id="adminSubmit" type="submit">Add Admin</button>
+	   </form>
+	 </div>
+	 <!-- edit admin of the page-->
+	 <div id="editAdminDiv" style="display: none">
+	   <h2>Edit Admin</h2>
+	   <form id="editAdminForm">
+		 <label for="adminName">Name:</label>
+		 <input type="text" id="adminName" required />
+
+		 <label for="adminId">Id:</label>
+		 <input type="text" id="adminId" required />
+
+		 <label for="adminEmail">Email:</label>
+		 <input type="email" id="adminEmail" required />
+
+		 <label for="adminRole">role:</label>
+		 <input type="text" id="adminRole" required />
+
+		 <label for="accessLevel">access Level:</label>
+		 <input type="text" id="accessLevel" required />
+
+		 <button id="adminSubmit" type="submit">Edit admin</button>
+	   </form>
+	 </div>
+	 <!-- the end of admin section -->
+	 <!-- the start of books section >>>>>>>-->
+   <h1>Books</h1>
+   <div id="booksList">
+     <!-- Existing books will be displayed here -->
+   </div>
+   
+   <div id="addBookDiv" style="display: none">
+     <h2>Add Book</h2>
+     <form id="addBookForm">
+       <label for="addTitle">Title:</label>
+       <input type="text" id="addTitle" required />
+   
+       <label for="addBookId">Book ID:</label>
+       <input type="text" id="addBookId" required />
+   
+       <label for="addAuthor">Author:</label>
+       <input type="text" id="addAuthor" required />
+   
+       <label for="addGenre">Genre:</label>
+       <input type="text" id="addGenre" required />
+   
+       <label for="addYear">Year:</label>
+       <input type="text" id="addYear" required />
+   
+       <label for="addIsbn">ISBN:</label>
+       <input type="text" id="addIsbn" required />
+   
+       <button id="addBookSubmit" type="submit">Add Book</button>
+     </form>
+   </div>
+   
+   <!-- Edit book section -->
+   <div id="editBookDiv" style="display: none">
+     <h2>Edit Book</h2>
+     <form id="editBookForm">
+       <label for="editTitle">Title:</label>
+       <input type="text" id="editTitle" required />
+   
+       <label for="editBookId">Book ID:</label>
+       <input type="text" id="editBookId" required />
+   
+       <label for="editAuthor">Author:</label>
+       <input type="text" id="editAuthor" required />
+   
+       <label for="editGenre">Genre:</label>
+       <input type="text" id="editGenre" required />
+   
+       <label for="editYear">Year:</label>
+       <input type="text" id="editYear" required />
+   
+       <label for="editIsbn">ISBN:</label>
+       <input type="text" id="editIsbn" required />
+   
+       <button id="editBookSubmit" type="submit">Save Changes</button>
+     </form>
+   </div>
+   
+	 <!-- end of book section -->
+	</main>
     </section>
 
-	<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
